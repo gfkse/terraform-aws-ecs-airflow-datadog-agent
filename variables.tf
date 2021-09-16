@@ -1,0 +1,81 @@
+variable "dd_api_key_parameter_name" {
+  type        = string
+  description = "The name of the parameter store secret containing the key to access Datadog API."
+}
+
+variable "dd_api_encryption_kms_key_id" {
+  type        = "string"
+  description = "Required only if your secret uses a custom KMS key and not the default key. The ARN for your custom key should be added as a resource."
+  default     = ""
+}
+
+variable "airflow_ecs_cluster_name" {
+  type        = string
+  description = "Name of the airflow ECS cluster for which the datadog monitoring will be attached."
+}
+
+variable "datadog_task_definition_memory" {
+  type        = string
+  description = "Desired task definition memory."
+  default     = null
+}
+
+variable "datadog_task_definition_cpu" {
+  type        = string
+  description = "Desired task definition cpu."
+  default     = null
+}
+
+variable "datadog_container_memory" {
+  type        = string
+  description = "Desired container memory."
+  default     = 256
+}
+
+variable "datadog_container_cpu" {
+  type        = string
+  description = "Desired container cpu."
+  default     = 10
+}
+
+variable "datadog_task_definition_network_mode" {
+  default = "awsvpc"
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "A mapping of tags to assign to the resources in the module."
+  default     = {}
+}
+
+variable "resource_prefix" {
+  type = string
+  description = "Prefix name for the resources."
+}
+
+variable "webserver_url" {
+  type        = string
+  description = "The url of the airflow webserver."
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "ID of VPC, where rds, elasticache, alb and ecs cluster will reside."
+}
+
+variable "subnet_ids" {
+  type        = list(string)
+  description = "The VPC's private Subnet IDs, where rds, elasticache, alb and ecs cluster will reside."
+}
+
+variable "datadog_task_definition_file" {
+  type = string
+  description = "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions.html"
+  default = null
+}
+
+variable "datadog_task_definition_file_dd_statsd_mapper_profiles" {
+  type        = string
+  description = "https://docs.datadoghq.com/developers/dogstatsd/dogstatsd_mapper/"
+  default = null
+}
