@@ -4,7 +4,7 @@ variable "dd_api_key_parameter_name" {
 }
 
 variable "dd_api_encryption_kms_key_id" {
-  type        = "string"
+  type        = string
   description = "Required only if your secret uses a custom KMS key and not the default key. The ARN for your custom key should be added as a resource."
   default     = ""
 }
@@ -27,13 +27,13 @@ variable "datadog_task_definition_cpu" {
 }
 
 variable "datadog_container_memory" {
-  type        = string
+  type        = number
   description = "Desired container memory."
   default     = 256
 }
 
 variable "datadog_container_cpu" {
-  type        = string
+  type        = number
   description = "Desired container cpu."
   default     = 10
 }
@@ -49,13 +49,13 @@ variable "tags" {
 }
 
 variable "resource_prefix" {
-  type = string
+  type        = string
   description = "Prefix name for the resources."
 }
 
 variable "webserver_url" {
   type        = string
-  description = "The url of the airflow webserver."
+  description = "The url of the airflow webserver for health check: https://docs.datadoghq.com/integrations/airflow/?tab=containerized#configuration"
 }
 
 variable "vpc_id" {
@@ -68,14 +68,14 @@ variable "subnet_ids" {
   description = "The VPC's private Subnet IDs, where rds, elasticache, alb and ecs cluster will reside."
 }
 
-variable "datadog_task_definition_file" {
-  type = string
+variable "datadog_task_definition" {
+  type        = list(object({}))
   description = "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions.html"
-  default = null
+  default     = null
 }
 
 variable "datadog_task_definition_file_dd_statsd_mapper_profiles" {
   type        = string
   description = "https://docs.datadoghq.com/developers/dogstatsd/dogstatsd_mapper/"
-  default = null
+  default     = null
 }
