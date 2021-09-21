@@ -1,3 +1,7 @@
+variable "region" {
+  type = string
+}
+
 variable "dd_api_key_parameter_name" {
   type        = string
   description = "The name of the parameter store secret containing the key to access Datadog API."
@@ -53,9 +57,9 @@ variable "resource_prefix" {
   description = "Prefix name for the resources."
 }
 
-variable "webserver_url" {
+variable "service_endpoint_url" {
   type        = string
-  description = "The url of the airflow webserver for health check: https://docs.datadoghq.com/integrations/airflow/?tab=containerized#configuration"
+  description = "The url of the service to check whether it can connect and is healthy: https://docs.datadoghq.com/integrations/airflow/?tab=containerized#configuration"
 }
 
 variable "vpc_id" {

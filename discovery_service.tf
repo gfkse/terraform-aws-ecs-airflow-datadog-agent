@@ -1,3 +1,7 @@
+locals {
+  service_discovery_name = "datadog-service"
+}
+
 resource "aws_service_discovery_private_dns_namespace" "datadog" {
   name        = var.resource_prefix
   description = "Namespace for the airflow cluster ${var.resource_prefix}"
@@ -5,7 +9,7 @@ resource "aws_service_discovery_private_dns_namespace" "datadog" {
 }
 
 resource "aws_service_discovery_service" "datadog" {
-  name = "datadog-service"
+  name = local.service_discovery_name
 
   dns_config {
     namespace_id = aws_service_discovery_private_dns_namespace.datadog.id

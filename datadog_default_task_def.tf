@@ -85,7 +85,7 @@ locals {
         }
       ],
       dockerLabels = {
-        "com.datadoghq.ad.instances"    = "[{\"url\": \"${var.webserver_url}\"}]",
+        "com.datadoghq.ad.instances"    = "[{\"url\": \"${var.service_endpoint_url}\"}]",
         "com.datadoghq.ad.check_names"  = "[\"airflow\"]",
         "com.datadoghq.ad.init_configs" = "[{}]"
       }
