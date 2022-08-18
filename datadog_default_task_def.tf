@@ -29,6 +29,11 @@ locals {
           hostPort      = 8126,
           protocol      = "tcp",
           containerPort = 8126
+        },
+        {
+          hostPort      = 5555,
+          protocol      = "tcp",
+          containerPort = 5555
         }
       ],
       secrets = [
@@ -65,6 +70,11 @@ locals {
         {
           name  = "DD_DOGSTATSD_MAPPER_PROFILES",
           value = replace(replace(data.template_file.dd_dogstatsd_mapper_profiles.rendered, "\n", ""), " ", "")
+        },
+        {
+          name  = "DD_HEALTH_PORT",
+          value = "5555"
+
         }
       ],
       mountPoints = [
