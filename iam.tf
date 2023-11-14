@@ -18,6 +18,12 @@ resource "aws_iam_role" "datadog_task_execution_role" {
   tags = var.tags
 }
 
+
+resource "aws_iam_role_policy_attachment" "aws_managed_ecs_task_execution_policy_attachment" {
+  role       = aws_iam_role.datadog_task_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
 resource "aws_iam_policy" "datadog_task_execution_role_policy" {
   count = var.dd_api_encryption_kms_key_id == "" || var.dd_api_encryption_kms_key_id == null ? 1 : 0
 
