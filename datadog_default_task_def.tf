@@ -98,6 +98,16 @@ locals {
         "com.datadoghq.ad.instances"    = "[{\"url\": \"${var.service_endpoint_url}\"}]",
         "com.datadoghq.ad.check_names"  = "[\"airflow\"]",
         "com.datadoghq.ad.init_configs" = "[{}]"
+      },
+      logConfiguration = {
+          "logDriver" = "awslogs",
+          "options" = {
+              "awslogs-create-group" = "true",
+              "awslogs-group" = "/ecs/${var.service_endpoint_url}",
+              "awslogs-region" = var.region,
+              "awslogs-stream-prefix" = "ecs"
+          },
+          "secretOptions" = []
       }
     }
   ]
