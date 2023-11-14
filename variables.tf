@@ -90,6 +90,12 @@ variable "datadog_agent_image" {
   default     = "datadog/agent:7"
 }
 
+variable "datadog_log_group_creation" {
+  description = "Specifies whether the log group need to be created or not."
+  type = bool
+  default = false
+}
+
 variable "datadog_log_group_name" {
   type        = string
   description = "This name will be used to form the aws cloudwatch group name to store the datadog agent container related logs."
