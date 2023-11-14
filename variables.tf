@@ -89,3 +89,9 @@ variable "datadog_agent_image" {
   description = "Datadog agent image to be used. You might be using a fixed version for production environments."
   default     = "datadog/agent:7"
 }
+
+variable "datadog_log_group_name" {
+  type        = string
+  description = "This name will be used to form the aws cloudwatch group name to store the datadog agent container related logs."
+  default     = "datadog_agent"
+}
