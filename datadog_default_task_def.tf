@@ -102,7 +102,7 @@ locals {
       logConfiguration = {
           "logDriver" = "awslogs",
           "options" = {
-              "awslogs-create-group" = var.datadog_log_group_creation,
+              "awslogs-create-group" = tostring(var.datadog_log_group_creation),
               "awslogs-group" = "/ecs/${var.datadog_log_group_name}",
               "awslogs-region" = var.region,
               "awslogs-stream-prefix" = "ecs"
