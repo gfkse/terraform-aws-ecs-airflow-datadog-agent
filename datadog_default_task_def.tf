@@ -15,7 +15,7 @@ locals {
   container_definition = [
     {
       name      = "datadog-agent",
-      image     = "datadog/agent:7",
+      image     = var.datadog_agent_image,
       essential = true,
       cpu       = var.datadog_container_cpu,
       memory    = var.datadog_container_memory,

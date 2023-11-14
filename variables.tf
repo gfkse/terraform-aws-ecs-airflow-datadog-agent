@@ -83,3 +83,9 @@ variable "datadog_task_definition_file_dd_statsd_mapper_profiles" {
   description = "https://docs.datadoghq.com/developers/dogstatsd/dogstatsd_mapper/"
   default     = null
 }
+
+variable "datadog_agent_image" {
+  type        = string
+  description = "Datadog agent image to be used. You might be using a fixed version for production environments."
+  default     = "datadog/agent:7"
+}
