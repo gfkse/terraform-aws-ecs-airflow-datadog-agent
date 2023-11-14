@@ -103,7 +103,7 @@ locals {
           "logDriver" = "awslogs",
           "options" = {
               "awslogs-create-group" = "true",
-              "awslogs-group" = "/ecs/${var.service_endpoint_url}",
+              "awslogs-group" = "/ecs/${var.airflow_ecs_cluster_name}",
               "awslogs-region" = var.region,
               "awslogs-stream-prefix" = "ecs"
           },
